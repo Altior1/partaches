@@ -5,7 +5,7 @@ defmodule Partaches.MixProject do
     [
       app: :partaches,
       version: "0.1.0",
-      elixir: "~> 1.15",
+      elixir: "~> 1.19.5",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -65,7 +65,8 @@ defmodule Partaches.MixProject do
       {:gettext, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.2.0"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      {:credo, "~> 1.7"}
     ]
   end
 
