@@ -1,0 +1,14 @@
+name: elixir CD
+
+on:
+  push:
+    branches: [livraison]
+
+jobs:
+  deploy:
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to production
+        run: echo "Deploying to production..." # Replace with actual deployment commands
