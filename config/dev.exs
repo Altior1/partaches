@@ -1,7 +1,7 @@
 import Config
 
-username = System.get_env("POSTGRES_USR") || raise "environment variable POSTGRES_USR is missing."
 password = System.get_env("POSTGRES_PWD") || raise "environment variable POSTGRES_PWD is missing."
+username = System.get_env("POSTGRES_USER") || raise "environment variable POSTGRES_USER is missing."
 database = System.get_env("POSTGRES_DB") || raise "environment variable POSTGRES_DB is missing."
 hostname = System.get_env("POSTGRES_HOST") || raise "environment variable POSTGRES_HOST is missing."
 port = System.get_env("POSTGRES_PORT") || raise "environment variable POSTGRES_PORT is missing."

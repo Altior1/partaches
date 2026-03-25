@@ -1,7 +1,22 @@
 FROM elixir:1.19.5
 
-# Install Hex + Rebar
-RUN mix deps.get --only=prod && mix local.hex --force && mix local.rebar --force
+ARG POSTGRES_PWD
+ARG POSTGRES_USER
+ARG POSTGRES_DB
+ARG POSTGRES_HOST
+ARG POSTGRES_PORT
+
+ENV POSTGRES_PWD=$POSTGRES_PWD
+ENV POSTGRES_USER=$POSTGRES_USER
+ENV POSTGRES_DB=$POSTGRES_DB
+ENV POSTGRES_HOST=$POSTGRES_HOST
+ENV POSTGRES_PORT=$POSTGRES_PORT
+
+COPY . /app
+WORKDIR /app
+
+# Install les dépendances système nécessaires
+RUN mix deps.get
 
 # lance le setup de l'application
 RUN mix setup
