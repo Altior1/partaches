@@ -1,11 +1,18 @@
 import Config
 
+username = System.get_env("POSTGRES_USR") || raise "environment variable POSTGRES_USR is missing."
+password = System.get_env("POSTGRES_PWD") || raise "environment variable POSTGRES_PWD is missing."
+database = System.get_env("POSTGRES_DB") || raise "environment variable POSTGRES_DB is missing."
+hostname = System.get_env("POSTGRES_HOST") || raise "environment variable POSTGRES_HOST is missing."
+port = System.get_env("POSTGRES_PORT") || raise "environment variable POSTGRES_PORT is missing."
+
 # Configure your database
 config :partaches, Partaches.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "partaches_dev",
+  username: username,
+  password: password,
+  hostname: hostname,
+  database: database,
+  port: String.to_integer(port),
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

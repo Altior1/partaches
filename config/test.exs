@@ -1,15 +1,23 @@
 import Config
 
+username = System.get_env("POSTGRES_USR") || raise "environment variable POSTGRES_USR is missing."
+password = System.get_env("POSTGRES_PWD") || raise "environment variable POSTGRES_PWD is missing."
+database = System.get_env("POSTGRES_DB") || raise "environment variable POSTGRES_DB is missing."
+hostname = System.get_env("POSTGRES_HOST") || raise "environment variable POSTGRES_HOST is missing."
+port = System.get_env("POSTGRES_PORT") || raise "environment variable POSTGRES_PORT is missing."
+
+
 # Configure your database
 #
 # The MIX_TEST_PARTITION environment variable can be used
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :partaches, Partaches.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "partaches_test#{System.get_env("MIX_TEST_PARTITION")}",
+  username: username,
+  password: password,
+  hostname: hostname,
+  database: "#{database}_test#{System.get_env("MIX_TEST_PARTITION")}",
+  port: String.to_integer(port),
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: System.schedulers_online() * 2
 
