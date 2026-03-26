@@ -14,7 +14,7 @@ check_env_var() {
     fi
 }
 
-check_env_var "$POSTGRES_PWD" 
+check_env_var "$POSTGRES_PASSWORD" 
 check_env_var "$POSTGRES_USER" 
 check_env_var "$POSTGRES_DB" 
 check_env_var "$POSTGRES_HOST" 
@@ -22,7 +22,7 @@ check_env_var "$POSTGRES_PORT"
 
 # build de l'image docker avec les variables d'environnement pour le build
 docker build \
-  --build-arg POSTGRES_PWD=$POSTGRES_PWD \
+  --build-arg POSTGRES_PASSWORD=$POSTGRES_PASSWORD \
   --build-arg POSTGRES_USER=$POSTGRES_USER \
   --build-arg POSTGRES_DB=$POSTGRES_DB \
   --build-arg POSTGRES_HOST=$POSTGRES_HOST \

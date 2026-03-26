@@ -1,6 +1,6 @@
 import Config
 
-password = System.get_env("POSTGRES_PWD") || raise "environment variable POSTGRES_PWD is missing."
+password = System.get_env("POSTGRES_PASSWORD") || raise "environment variable POSTGRES_PASSWORD is missing."
 username = System.get_env("POSTGRES_USER") || raise "environment variable POSTGRES_USER is missing."
 database = System.get_env("POSTGRES_DB") || raise "environment variable POSTGRES_DB is missing."
 hostname = System.get_env("POSTGRES_HOST") || raise "environment variable POSTGRES_HOST is missing."
@@ -12,7 +12,7 @@ config :partaches, Partaches.Repo,
   password: password,
   hostname: hostname,
   database: database,
-  port: String.to_integer(port),
+  port: port,
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
